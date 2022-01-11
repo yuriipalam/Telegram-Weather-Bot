@@ -1,0 +1,1 @@
+from .isadmin import IsAdmin

@@ -1,0 +1,6 @@
+/main.db
+/errors.txt
+/.env
+/log.txt
+/auto_sender_log.txt
+**/__pycache__

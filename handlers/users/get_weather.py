@@ -6,7 +6,6 @@ from aiogram import types
 from suntime import Sun
 
 from data.config import WEATHER_TOKENS, SERVER_TIMEZONE
-from loader import db
 from .additionals import Orphography, weather_smiles, monthes
 
 

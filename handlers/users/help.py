@@ -2,10 +2,10 @@ from aiogram import types
 from aiogram.dispatcher import FSMContext
 from aiogram.dispatcher.filters import Text
 
-from .get_weather import get_timezone
 from keyboards.inline.help_menu import help_buttons_on_sub, help_buttons_off_sub
 from loader import dp, bot, db
 from states.main_states import ChangeCity
+from .get_weather import get_timezone
 
 
 @dp.message_handler(Text(equals=['/help', 'Помощь']))

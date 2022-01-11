@@ -1,8 +1,9 @@
+import codecs
+from datetime import datetime
+
+import emoji
 from aiogram import types
 from aiogram.dispatcher.middlewares import BaseMiddleware
-import codecs
-import emoji
-from datetime import datetime
 
 
 class HandlersLogger(BaseMiddleware):

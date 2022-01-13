@@ -1,4 +1,5 @@
 from aiogram import types
+from aiogram.dispatcher.handler import CancelHandler
 from aiogram.dispatcher.middlewares import BaseMiddleware
 
 from handlers.users.start import bot_start
@@ -19,5 +20,5 @@ class CheckValidation(BaseMiddleware):
             pass
         current = db.check_validation(message)
         if current is False:
-            data["middleware_data"] = False
-            return await bot_start(message)
+            await bot_start(message)
+            raise CancelHandler()

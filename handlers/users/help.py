@@ -9,9 +9,7 @@ from .get_weather import get_timezone
 
 
 @dp.message_handler(Text(equals=['/help', 'Помощь']))
-async def bot_help(message: types.Message, middleware_data=True):
-    if middleware_data is False:
-        return
+async def bot_help(message: types.Message):
     current_user = db.select_user(user_id=message.from_user.id)
     if current_user[6] == 1:
         help_buttons = help_buttons_off_sub

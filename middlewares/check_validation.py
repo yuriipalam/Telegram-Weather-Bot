@@ -8,17 +8,18 @@ from loader import db
 
 class CheckValidation(BaseMiddleware):
     async def on_process_message(self, message: types.Message, data: dict):
-        try:
-            if data['command'].command == "start":
-                return
-        except KeyError:
-            pass
-        try:
-            if data['raw_state'] is not None:
-                return
-        except KeyError:
-            pass
         current = db.check_validation(message)
+        try:
+            if data['raw_state'] == "Start:city":
+                return
+        except KeyError:
+            pass
         if current is False:
+            data["user_start"] = True
+            try:
+                if data['command'].command == "start":
+                    return
+            except KeyError:
+                pass
             await bot_start(message)
             raise CancelHandler()

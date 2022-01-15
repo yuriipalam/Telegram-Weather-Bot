@@ -1,7 +1,7 @@
 from aiogram import Dispatcher
 
-from .check_handler import CheckHandler
 from .check_validation import CheckValidation
+from .check_handler import CheckHandler
 from .log import HandlersLogger
 from .throttling import ThrottlingMiddleware
 

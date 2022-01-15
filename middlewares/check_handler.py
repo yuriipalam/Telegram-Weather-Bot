@@ -4,15 +4,23 @@ from aiogram.dispatcher.handler import CancelHandler
 from aiogram.dispatcher.middlewares import BaseMiddleware
 
 from string import punctuation
+from data.config import admins
 
 punctuation = [x for x in punctuation]
 
 
 class CheckHandler(BaseMiddleware):
     async def on_process_message(self, message: types.Message, data: dict):
+        if message.from_user.id in admins:
+            return
+
+        try:
+            if data["user_start"]:
+                return
+        except KeyError:
+            pass
+
         def dirty_text_checker(text):
-            if text == "/start":
-                return False
             for i in text:
                 if i in punctuation:
                     return True

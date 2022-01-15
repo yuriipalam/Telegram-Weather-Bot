@@ -52,6 +52,8 @@ async def change_city_callback(call: types.CallbackQuery):
     await bot.answer_callback_query(call.id)
     current_user = db.select_user(user_id=call.from_user.id)
     await call.message.delete()
+    if current_user is None:
+        return
     if current_user[6] == 1:
         db.change_subscription((False, call.from_user.id))
         await bot.send_message(call.from_user.id, "Подписка отключена \U0001F614\U0001F446")
@@ -64,6 +66,8 @@ async def change_city_callback(call: types.CallbackQuery):
     await bot.answer_callback_query(call.id)
     current_user = db.select_user(user_id=call.from_user.id)
     await call.message.delete()
+    if current_user is None:
+        return
     if current_user[6] == 0:
         db.change_subscription((True, call.from_user.id))
         await bot.send_message(call.from_user.id, "Подписка включена \U0001F60E")
